@@ -1,0 +1,34 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:latest
+    network_mode: bridge
+    container_name: postgresql
+    restart: always
+    environment:
+      POSTGRES_DB: ROS
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: p@ssw0rd@123
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4:5.3
+    network_mode: bridge
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: basavaraj.bhavi@pratian.com
+      PGADMIN_DEFAULT_PASSWORD: pg@dmin@123
+      VIRTUAL_HOST=pgadmin.learn.skillassure.com
+      LETSENCRYPT_HOST=pgadmin.learn.skillassure.com
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - db  
+    links:
+      - "db:db"
