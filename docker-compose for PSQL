@@ -20,7 +20,7 @@ services:
     container_name: pgadmin
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: basavaraj.bhavi@pratian.com
+      PGADMIN_DEFAULT_EMAIL: emailid.com
       PGADMIN_DEFAULT_PASSWORD: pg@dmin@123
       VIRTUAL_HOST=pgadmin.learn.skillassure.com
       LETSENCRYPT_HOST=pgadmin.learn.skillassure.com
